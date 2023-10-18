@@ -1,6 +1,6 @@
 from flask_marshmallow import Marshmallow
 
-from .model import Jogo
+from .model import Game
 
 ma = Marshmallow()
 
@@ -11,4 +11,4 @@ def configure(app):
 
 class JogoSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        model = Jogo
+        model = Game

@@ -15,6 +15,7 @@ def create_app():
 
     Migrate(app, app.db)
 
-    from .controllers.jogos import get_jogos
+    from .games import bp_games
+    app.register_blueprint(bp_games)
 
     return app

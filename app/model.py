@@ -8,8 +8,8 @@ def configure(app):
     app.db = db
 
 
-class Jogo(db.Model):
+class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    titulo = db.Column(db.String(255))
-    plataforma = db.Column(db.String(255))
-    estilo = db.Column(db.String(255))
+    title = db.Column(db.String(255))
+    console = db.Column(db.String(255))
+    genre = db.Column(db.String(255))
