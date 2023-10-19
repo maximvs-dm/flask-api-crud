@@ -9,6 +9,6 @@ def configure(app):
     ma.init_app(app)
 
 
-class JogoSchema(ma.SQLAlchemyAutoSchema):
+class GameSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Game

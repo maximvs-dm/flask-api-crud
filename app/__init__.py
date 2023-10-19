@@ -6,7 +6,6 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from .model import configure as config_db
 from .serializer import configure as config_ma
 
-
 # Swagger UI route
 SWAGGER_URL = '/swagger-ui'
 API_URL = '/swagger'
@@ -32,13 +31,13 @@ def create_app():
     from .games import bp_games
     app.register_blueprint(bp_games)
 
+    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
     @app.route('/swagger')
     def get_swagger():
         swag = swagger(app)
         swag['info']['version'] = "1.0"
         swag['info']['title'] = "Flask CRUD API"
         return jsonify(swag)
-
-    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
     return app
