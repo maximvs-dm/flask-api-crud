@@ -2,6 +2,7 @@ from flask import Blueprint, request, current_app
 from .model import Game
 from .serializer import GameSchema
 
+import ipdb
 from pprint import pprint
 
 bp_games = Blueprint('games', __name__)
@@ -75,16 +76,18 @@ def new_game():
     gs = GameSchema()
     pprint(request.json)
     game = gs.load(request.json)
+    print(game, type(game))
+    ipdb.set_trace()
     current_app.db.session.add(game)
     current_app.db.session.commit()
     return 'ok', 200
 
+    # console:
+    #     type: array
+    #     description: list of consoles for which the game is available
+    #     items:
+    #         type: string
 
-                    # console:
-                    #     type: array
-                    #     description: list of consoles for which the game is available
-                    #     items:
-                    #         type: string
 
 @bp_games.route('/excluir/<int:id>', methods=['delete'])
 def delete_game(id):
