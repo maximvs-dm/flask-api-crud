@@ -3,7 +3,6 @@ from .model import Game
 from .serializer import GameSchema
 
 import ipdb
-from pprint import pprint
 
 bp_games = Blueprint('games', __name__)
 
@@ -23,7 +22,7 @@ def show_games():
                     type: array
                     items:
                         schema:
-                            id: Game
+                            id: ReadGame
                             properties:
                                 id:
                                     type: number
@@ -54,7 +53,7 @@ def new_game():
           - in: body
             name: body
             schema:
-                id: Game2
+                id: CreateGame
                 required:
                     - title
                     - console
@@ -74,26 +73,88 @@ def new_game():
                 description: Game added successfully
         """
     gs = GameSchema()
-    pprint(request.json)
+    # pprint(request.json)
     game = gs.load(request.json)
-    print(game, type(game))
-    ipdb.set_trace()
+    # print(game, type(game))
     current_app.db.session.add(game)
     current_app.db.session.commit()
-    return 'ok', 200
-
-    # console:
-    #     type: array
-    #     description: list of consoles for which the game is available
-    #     items:
-    #         type: string
+    # ipdb.set_trace()
+    return {
+        'message': 'game created succesfully', 'data': gs.dump(game)
+    }, 200
 
 
 @bp_games.route('/excluir/<int:id>', methods=['delete'])
 def delete_game(id):
-    pass
+    """
+        Delete game
+        ---
+        tags:
+            - games
+        parameters:
+          - in: path
+            name: id
+            type: int
+            description: id of the game to be deleted
+        responses:
+            200:
+                description: Game deleted successfully
+            404:
+                description: Game not found
+        """
+    query = Game.query.filter(Game.id == id)
+    game = query.first()
+    ipdb.set_trace()
+    if not game:
+        return f'Game {id} not found', 404
+    title = game.title
+    query.delete()
+    current_app.db.session.commit()
+    return f'Game {title} deleted successfully', 200
 
 
 @bp_games.route('/atualizar/<int:id>', methods=['put'])
 def edit_game(id):
-    pass
+    """
+        Update game
+        ---
+        tags:
+            - games
+        parameters:
+          - in: path
+            name: id
+            type: int
+            description: id of the game to be deleted
+
+          - in: body
+            name: body
+            schema:
+                id: CreateGame
+                properties:
+                    title:
+                        type: string
+                        description: game title
+                    console:
+                        type: string
+                        description: game console
+                    genre:
+                        type: string
+                        description: game genre
+        responses:
+            200:
+                description: Game updated successfully
+            404:
+                description: Game not found
+        """
+    gs = GameSchema()
+    query = Game.query.filter(Game.id == id)
+    game = query.first()
+    if not game:
+        return f'Game {id} not found', 404
+    query.update(request.json)
+    current_app.db.session.commit()
+    # ipdb.set_trace()
+    return {
+        'message': f'Game {game.title} updated successfully',
+        'data': gs.dump(game)
+    }, 200
