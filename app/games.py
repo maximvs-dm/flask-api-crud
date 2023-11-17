@@ -104,7 +104,7 @@ def delete_game(id):
         """
     query = Game.query.filter(Game.id == id)
     game = query.first()
-    ipdb.set_trace()
+    # ipdb.set_trace()
     if not game:
         return f'Game {id} not found', 404
     title = game.title
