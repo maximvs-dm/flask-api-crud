@@ -6,6 +6,20 @@ API de exemplo para as aulas de desenvolvimento web da Faculdade Impacta
 
 1. **Se estiver em um ambiente virtual, ativar o ambiente**
 
+    1. Com `venv`
+    ```sh
+    source ./<venv_name>/Scripts/Activate
+    ```
+
+    ou 
+    2. Com `pipenv`
+    ```sh
+    pipenv shell
+    ou
+    py -m pipenv shell
+    ```
+
+
 2. Instalar os requisitos
 
     1. Usando o instalador de pacotes nativo do Python: `pip`
@@ -16,7 +30,7 @@ API de exemplo para as aulas de desenvolvimento web da Faculdade Impacta
 
     2. Usando o gerenciador de pacotes: `pipenv`
     ```sh
-    pipenv install
+    pipenv install --dev
     ```
 
 3. copiar e executar os comandos a seguir no terminal/shell
