@@ -1,4 +1,4 @@
-# Simple Flask API
+# Flask API - CRUD
 
 API de exemplo para as aulas de desenvolvimento web da Faculdade Impacta
 
@@ -42,7 +42,7 @@ py -m  venv <venv_name>
 source ./<venv_name>/Scripts/Activate
 ```
 
-## Como rodar o projeto (com o ambiente virtual ativo)]
+## Como rodar o projeto (com o ambiente virtual ativo)
 
 1. Ativar o ambiente virtual (ver seção anterior)
 
@@ -84,3 +84,7 @@ source ./<venv_name>/Scripts/Activate
     ```
 
 4. Após alterações nas classes dos modelos que representam as tabelas no banco, isto é, adição/remoção de campos, inclusão exclusão de tabelas, alteração de nomes de tabelas ou campos, etc., é preciso re-executar os passos 2 e 3.
+
+## Acessando o Swagger do projeto: 
+
+[http://127.0.0.1:5000/swagger-ui/](http://127.0.0.1:5000/swagger-ui/)
