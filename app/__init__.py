@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, jsonify
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -5,6 +7,11 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 from .model import configure as config_db
 from .serializer import configure as config_ma
+
+# Export environment variables for testing
+os.environ['FLASK_APP'] = 'app'
+os.environ['FLASK_ENV'] = 'Development'
+os.environ['FLASK_DEBUG'] = 'True'
 
 # Swagger UI route
 SWAGGER_URL = '/swagger-ui'
