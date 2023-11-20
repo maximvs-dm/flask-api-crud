@@ -28,7 +28,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 def create_app():
     app = Flask(__name__)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../temp/teste.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../development-database/test.db'
 
     config_db(app)
     config_ma(app)
