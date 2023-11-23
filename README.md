@@ -13,7 +13,7 @@ PIPENV é um módulo que usa o próprio `pip` do Python para instalar as depend�
 ```sh
 pip install pipenv
 ou
-py -m pip install venv
+py -m pip install pipenv
 ```
 
 2. Ativar ou criar o ambiente virtual (o pipenv automaticamente verifica se já existe um ambiente virtual para o diretório atual e ativa-o em caso afirmativo. Caso não exista, ele já cria um antes de ativá-lo)
