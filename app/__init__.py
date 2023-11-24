@@ -36,6 +36,14 @@ def create_app():
     Migrate(app, app.db)
 
     from .games import bp_games
+
+    @bp_games.after_request 
+    def after_request(response):
+        header = response.headers
+        header['Access-Control-Allow-Origin'] = '*'
+        header['Access-Control-Allow-Headers'] = '*'
+        return response
+
     app.register_blueprint(bp_games)
 
     app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
