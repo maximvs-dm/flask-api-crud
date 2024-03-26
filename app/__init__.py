@@ -42,6 +42,7 @@ def create_app():
         header = response.headers
         header['Access-Control-Allow-Origin'] = '*'
         header['Access-Control-Allow-Headers'] = '*'
+        header['Access-Control-Allow-Methods'] = '*'
         return response
 
     app.register_blueprint(bp_games)
