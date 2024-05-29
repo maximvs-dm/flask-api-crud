@@ -71,7 +71,7 @@ source ./<venv_name>/Scripts/Activate
 
 ## Criar o banco de dados e realizar as migrações (executar apenas o passo 3 para rodar o projeto após baixar/atualizar o repositório do git)
 
-1. Inicializar o banco de dados (esse passo só precisa ser executado caso esteja refazendo as migrações, após deletar a pasta `migrations` ou ao baixar/iniciar o projeto pela primeira vez em uma máquina)
+1. Inicializar o banco de dados (esse passo só precisa ser executado caso esteja refazendo as migrações, após deletar a pasta `migrations` ou ao iniciar um projeto pela primeira vez em uma máquina - sem a pasta migrations ainda)
 
    ```sh
    flask db init
