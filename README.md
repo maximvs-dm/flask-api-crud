@@ -71,7 +71,7 @@ source ./<venv_name>/Scripts/Activate
 
 ## Criar o banco de dados e realizar as migrações (executar apenas o passo 3 para rodar o projeto após baixar/atualizar o repositório do git)
 
-1. Inicializar o banco de dados (esse passo só precisa ser executado caso esteja refazendo as migrações, após deletar a pasta `migrations` ou ao criar um projeto novo do zero)
+1. Inicializar o banco de dados (esse passo só precisa ser executado caso esteja refazendo as migrações, após deletar a pasta `migrations` ou ao baixar/iniciar o projeto pela primeira vez em uma máquina)
 
    ```sh
    flask db init
@@ -83,13 +83,13 @@ source ./<venv_name>/Scripts/Activate
    flask db migrate
    ```
 
-3. Executar as migrações para atualizar o banco de dados
+3. Executar as migrações para atualizar o banco de dados (executado para persistir no banco as alterações das migrações após o passo 2)
 
    ```sh
    flask db upgrade
    ```
 
-4. Após alterações nas classes dos modelos que representam as tabelas no banco, isto é, adição/remoção de campos, inclusão exclusão de tabelas, alteração de nomes de tabelas ou campos, etc., é preciso re-executar os passos 2 e 3.
+4. Após alterações nas classes dos modelos que representam as tabelas no banco, isto é, adição/remoção de campos, inclusão exclusão de tabelas, alteração de nomes de tabelas ou campos, etc., é preciso re-executar os passos 2 e 3. (é possível executar o passo 2 diversas vezes para gerar diferentes migrações e depois realizar o passo 3 uma única vez no final, ou então executar o passo 3 após cada execução do passo 2, fica a critério do/a desenvolvedor/a)
 
 ## Acessando o Swagger do projeto:
 
